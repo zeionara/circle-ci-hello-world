@@ -12,4 +12,4 @@ jobs:
       - run: gcloud config set project zyra-1537465980753
       - run: echo $GCLOUD_SERVICE_KEY > $HOME/gcloud-service-key.json
       - run: gcloud auth activate-service-account --key-file $HOME/gcloud-service-key.json
-      - run: gcloud functions deploy helloWorld --entry-point sayHelloWorld --memory 128MB --region europe-west1 --trigger-http
+      - run: gcloud functions deploy helloWorld --runtime nodejs8 --entry-point sayHelloWorld --memory 128MB --region europe-west1 --trigger-http
