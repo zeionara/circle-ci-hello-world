@@ -1,0 +1,28 @@
+{
+  "name": "circle-ci-hello-world",
+  "version": "1.0.0",
+  "description": "Hello world using circle ci and google cloud functions",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "functions-framework --target=helloWorld"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeionara/circle-ci-hello-world.git"
+  },
+  "keywords": [
+    "circle-ci",
+    "cloud-function",
+    "functions-framework"
+  ],
+  "author": "zeio",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/zeionara/circle-ci-hello-world/issues"
+  },
+  "homepage": "https://github.com/zeionara/circle-ci-hello-world#readme",
+  "dependencies": {
+    "@google-cloud/functions-framework": "^1.3.2"
+  }
+}
