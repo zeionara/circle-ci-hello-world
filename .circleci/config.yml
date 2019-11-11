@@ -1,15 +1,18 @@
-machine:
-  node:
-    version: 8.15.0
-dependencies:
-  pre:
-    - sudo /opt/google-cloud-sdk/bin/gcloud components update --quiet
-    - sudo /opt/google-cloud-sdk/bin/gcloud components install beta --quiet
-    - sudo /opt/google-cloud-sdk/bin/gcloud config set project zyra-1537465980753
-    - echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json
-    - sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
-deployment:
-  production:
-    branch: master
-    commands:
-      - sudo /opt/google-cloud-sdk/bin/gcloud beta functions deploy helloWorld --entry-point sayHelloWorld --memory 128MB --region europe-west1 --trigger-http
+version: 2.1
+jobs:
+  build:
+    machine:
+      node:
+        version: 8.15.0
+    dependencies:
+      pre:
+        - sudo /opt/google-cloud-sdk/bin/gcloud components update --quiet
+        - sudo /opt/google-cloud-sdk/bin/gcloud components install beta --quiet
+        - sudo /opt/google-cloud-sdk/bin/gcloud config set project zyra-1537465980753
+        - echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json
+        - sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
+    deployment:
+      production:
+        branch: master
+        commands:
+          - sudo /opt/google-cloud-sdk/bin/gcloud beta functions deploy helloWorld --entry-point sayHelloWorld --memory 128MB --region europe-west1 --trigger-http
