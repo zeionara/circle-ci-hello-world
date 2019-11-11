@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run: 
           name: install npm dependencies for testing
-          command: npm install -g mocha chai
+          command: apt-get update && apt-get install nodejs npm && npm install -g mocha chai
       - run: 
           name: run tests
           command: mocha
