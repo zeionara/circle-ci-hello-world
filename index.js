@@ -1,4 +1,4 @@
-exports.helloWorld = (req, res) => {
+exports.decompose_number = (req, res) => {
 	const number = req.query.number;
 	if (!number) {
 		res.send("Please, define a number for decomposing so as url looks like this: 'http://localhost:8080/?number=3000'");
@@ -7,8 +7,11 @@ exports.helloWorld = (req, res) => {
 	}
 };
 
-function is_prime(number){
-	for (var i = 2; i < Math.sqrt(number); i++){
+exports.is_prime = (number) => {
+	if (number <= 1){
+		return false;
+	}
+	for (var i = 2; i <= Math.sqrt(number); i++){
 		if (number % i == 0){
 			return false;
 		}
@@ -16,7 +19,7 @@ function is_prime(number){
 	return true;
 }
 
-function decompose(number){
+exports.decompose = (number) => {
 	var divisors = []
 	var divisor = 2;
 	var dividend = number;
