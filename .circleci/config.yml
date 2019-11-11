@@ -10,6 +10,6 @@ jobs:
       #- run: gcloud components install beta --quiet
       - run: ls -al
       - run: gcloud config set project zyra-1537465980753
-      - run: $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > $HOME/gcloud-service-key.json
+      - run: echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > $HOME/gcloud-service-key.json
       - run: gcloud auth activate-service-account --key-file $HOME/gcloud-service-key.json
       - run: gcloud functions deploy helloWorld --entry-point sayHelloWorld --memory 128MB --region europe-west1 --trigger-http
