@@ -6,9 +6,6 @@ jobs:
     steps:
       - checkout
       - run: apt-get update && apt-get --only-upgrade install kubectl google-cloud-sdk google-cloud-sdk-app-engine-grpc google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-firestore-emulator google-cloud-sdk-cloud-build-local google-cloud-sdk-datastore-emulator google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-app-engine-python-extras google-cloud-sdk-datalab google-cloud-sdk-app-engine-java
-      #- run: gcloud components update --quiet
-      #- run: gcloud components install beta --quiet
-      - run: ls -al
       - run: gcloud config set project zyra-1537465980753
       - run: echo $GCLOUD_SERVICE_KEY > $HOME/gcloud-service-key.json
       - run: gcloud auth activate-service-account --key-file $HOME/gcloud-service-key.json
