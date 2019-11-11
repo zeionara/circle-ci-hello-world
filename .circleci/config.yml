@@ -6,10 +6,15 @@ jobs:
     steps:
       - checkout
       - run: 
-          name: deploy cloud function
+          name: update google cloud sdk
+          command: apt-get update && apt-get --only-upgrade install kubectl google-cloud-sdk google-cloud-sdk-app-engine-grpc google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-firestore-emulator google-cloud-sdk-cloud-build-local google-cloud-sdk-datastore-emulator google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-app-engine-python-extras google-cloud-sdk-datalab google-cloud-sdk-app-engine-java
+      - run:
+          name: configure google cloud sdk
           command: |
-            apt-get update && apt-get --only-upgrade install kubectl google-cloud-sdk google-cloud-sdk-app-engine-grpc google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-go google-cloud-sdk-firestore-emulator google-cloud-sdk-cloud-build-local google-cloud-sdk-datastore-emulator google-cloud-sdk-app-engine-python google-cloud-sdk-cbt google-cloud-sdk-bigtable-emulator google-cloud-sdk-app-engine-python-extras google-cloud-sdk-datalab google-cloud-sdk-app-engine-java
             gcloud config set project zyra-1537465980753
             echo $GCLOUD_SERVICE_KEY > $HOME/gcloud-service-key.json
             gcloud auth activate-service-account --key-file $HOME/gcloud-service-key.json
+      - run:
+          name: deploy cloud function
+          command: |
             gcloud functions deploy helloWorld --runtime nodejs8 --entry-point helloWorld --memory 128MB --region europe-west1 --trigger-http
