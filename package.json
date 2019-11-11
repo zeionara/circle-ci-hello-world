@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "start": "functions-framework --target=helloWorld"
+    "start": "functions-framework --target=decompose_number"
   },
   "repository": {
     "type": "git",

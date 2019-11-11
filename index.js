@@ -7,7 +7,7 @@ exports.decompose_number = (req, res) => {
 	}
 };
 
-exports.is_prime = (number) => {
+exports.is_prime = is_prime = (number) => {
 	if (number <= 1){
 		return false;
 	}
@@ -19,7 +19,7 @@ exports.is_prime = (number) => {
 	return true;
 }
 
-exports.decompose = (number) => {
+exports.decompose = decompose = (number) => {
 	var divisors = []
 	var divisor = 2;
 	var dividend = number;
