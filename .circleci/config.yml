@@ -1,9 +1,6 @@
 version: 2.1
 jobs:
   build:
-    machine:
-      node:
-        version: 8.15.0
     steps:
         - checkout
         - sudo /opt/google-cloud-sdk/bin/gcloud components update --quiet
