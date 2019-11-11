@@ -5,7 +5,7 @@ jobs:
       - image: google/cloud-sdk
     steps:
       - checkout
-      - run: /opt/google-cloud-sdk/bin/gcloud components update --quiet
+      - run: gcloud components update --quiet
       - run: /opt/google-cloud-sdk/bin/gcloud components install beta --quiet
       - run: /opt/google-cloud-sdk/bin/gcloud config set project zyra-1537465980753
       - run: $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json
